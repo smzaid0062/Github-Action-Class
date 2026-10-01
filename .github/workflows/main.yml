@@ -2,16 +2,15 @@ name: Hello
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
 
 jobs:
-
   greet:
     runs-on: ubuntu-latest
     steps:
-    - name: say hello
-    - run: echo "Hello from github-action-class"
+      - name: say hello
+        run: echo "Hello from github-action-class"
 
-    - name: say bye
-    - run: echo "Hello Bye Bye"
-  
+      - name: say bye
+        run: echo "Hello Bye Bye"
