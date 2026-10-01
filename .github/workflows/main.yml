@@ -8,7 +8,7 @@ jobs:
 
   greet:
     runs-on: ubuntu-latest
-    setps:
+    steps:
     - name: say hello
     - run: echo "Hello from github-action-class"
 
