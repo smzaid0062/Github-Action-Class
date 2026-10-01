@@ -1,0 +1,17 @@
+name: Hello
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+
+  greet:
+    runs-on: ubuntu-latest
+    setps:
+    - name: say hello
+    - run: echo "Hello from github-action-class"
+
+    - name: say bye
+    - run: echo "Hello Bye Bye"
+  
