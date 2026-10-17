@@ -6,9 +6,9 @@ on:
       - main
   workflow_dispatch: null
 permissions:
-  page: write
+  pages: write
   id-token: write
-  content: read
+  contents: read
 jobs:
   deploye:
     runs-on: ubuntu-latest
