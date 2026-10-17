@@ -3,7 +3,13 @@ on:
   push:
     branches:
       - main
+  permissions:
+    page: write
+    id-token: write
+    content: read
+    
   workflow_dispatch:
+  
 
 jobs:
   deploye:
