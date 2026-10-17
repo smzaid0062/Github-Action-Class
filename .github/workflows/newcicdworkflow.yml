@@ -1,1 +1,33 @@
-
+name: CICD
+on:
+  push:
+    branchers:
+      - main
+jobs:
+  code:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        run: echo " Code clone from github"
+  build:
+    needs:
+      - code
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build docekr container
+        run: echo "Docker container build"
+  test:
+    needs:
+      - build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Testing the container
+        run: echo :Test the container"
+  deploye:
+    needs:
+      - build
+      - test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploying the container
+        run: echo "Deploying the contaienr"
