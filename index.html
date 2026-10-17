@@ -3,22 +3,381 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Simple Webpage</title>
+    <title>DevOps Student · Portfolio</title>
+    <style>
+        /* ---------- Global styles ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(145deg, #f0f4fa 0%, #e6ecf5 100%);
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            color: #1a2b3e;
+            line-height: 1.6;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* main card */
+        .portfolio {
+            max-width: 960px;
+            width: 100%;
+            background: rgba(255,255,255,0.80);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 3.5rem;
+            padding: 2.8rem 2.5rem;
+            box-shadow: 0 25px 40px -12px rgba(0, 20, 40, 0.25),
+                        0 0 0 1px rgba(255,255,255,0.5) inset;
+            border: 1px solid rgba(255,255,255,0.7);
+            transition: transform 0.2s ease;
+        }
+
+        /* ---------- Typography ---------- */
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            color: #0b1e2e;
+            margin-bottom: 0.25rem;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #1e3b5c;
+            color: white;
+            font-size: 0.9rem;
+            font-weight: 600;
+            padding: 0.35rem 1.2rem;
+            border-radius: 40px;
+            letter-spacing: 0.3px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 8px rgba(0,20,40,0.1);
+            border: 1px solid #2e4e70;
+        }
+
+        h2 {
+            font-size: 1.6rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            color: #0e2a44;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        h2::after {
+            content: '';
+            flex: 1;
+            height: 2px;
+            background: linear-gradient(90deg, #aac3dd, transparent);
+            margin-left: 0.75rem;
+            border-radius: 2px;
+        }
+
+        .subhead {
+            font-size: 1.2rem;
+            color: #2c4c6e;
+            margin-bottom: 1.8rem;
+            font-weight: 400;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem 1.2rem;
+        }
+
+        .subhead span {
+            background: #d9e6f5;
+            padding: 0.2rem 1rem;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #0f2e4a;
+            border: 1px solid #b8d0e8;
+        }
+
+        /* ---------- Skills / tools ---------- */
+        .skill-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.85rem;
+            margin: 1.5rem 0 2rem;
+        }
+
+        .skill-item {
+            background: white;
+            padding: 0.65rem 1.4rem;
+            border-radius: 50px;
+            font-weight: 500;
+            font-size: 1rem;
+            color: #12324d;
+            box-shadow: 0 4px 10px -3px rgba(0,30,50,0.08), 0 0 0 1px rgba(255,255,255,0.9) inset;
+            border: 1px solid #cbdae9;
+            transition: all 0.15s;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .skill-item:hover {
+            background: #1e3b5c;
+            color: white;
+            border-color: #1e3b5c;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 18px -8px #1e3b5c40;
+        }
+
+        /* ---------- Projects ---------- */
+        .project-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin: 1.5rem 0 2rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 1.8rem;
+            padding: 1.6rem 2rem;
+            border: 1px solid #d7e2ee;
+            box-shadow: 0 6px 14px -6px rgba(0,20,40,0.08);
+            transition: all 0.2s;
+        }
+
+        .project-card:hover {
+            border-color: #9bb9d9;
+            box-shadow: 0 16px 24px -12px rgba(0, 40, 70, 0.2);
+            transform: scale(1.005);
+        }
+
+        .project-title {
+            font-size: 1.35rem;
+            font-weight: 650;
+            color: #0b2a45;
+            margin-bottom: 0.4rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .project-title i {
+            font-size: 1.1rem;
+            color: #2b5a85;
+        }
+
+        .project-desc {
+            color: #1f3d5a;
+            font-size: 1rem;
+            margin-bottom: 0.9rem;
+            line-height: 1.55;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.45rem;
+        }
+
+        .project-tags span {
+            background: #e1edfb;
+            font-size: 0.78rem;
+            font-weight: 600;
+            padding: 0.25rem 1rem;
+            border-radius: 40px;
+            color: #173a5a;
+            letter-spacing: 0.2px;
+            text-transform: uppercase;
+            border: 1px solid #bed5ee;
+        }
+
+        /* ---------- contact / footer ---------- */
+        .contact-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem 1.8rem;
+            margin: 1.8rem 0 0.8rem;
+            padding-top: 1.4rem;
+            border-top: 1px solid #c3d5e9;
+        }
+
+        .contact-links a {
+            text-decoration: none;
+            color: #143450;
+            font-weight: 550;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.4rem 1rem;
+            border-radius: 40px;
+            background: rgba(255,255,255,0.6);
+            border: 1px solid #c9daea;
+            transition: all 0.15s;
+            font-size: 1rem;
+        }
+
+        .contact-links a:hover {
+            background: #1e3b5c;
+            color: white;
+            border-color: #1e3b5c;
+            transform: translateY(-2px);
+        }
+
+        .footer-note {
+            font-size: 0.85rem;
+            color: #506f8c;
+            text-align: center;
+            margin-top: 2rem;
+            border-top: 1px dashed #b8cee2;
+            padding-top: 1.5rem;
+            letter-spacing: 0.3px;
+        }
+
+        /* responsiveness */
+        @media (max-width: 600px) {
+            body {
+                padding: 1rem 0.6rem;
+            }
+            .portfolio {
+                padding: 1.8rem 1.4rem;
+                border-radius: 2.2rem;
+            }
+            h1 {
+                font-size: 2.2rem;
+            }
+            .project-card {
+                padding: 1.2rem 1.3rem;
+            }
+            .project-title {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
 </head>
 <body>
+    <div class="portfolio">
+        <!-- header / identity -->
+        <span class="badge">⚙️ DevOps student · cloud & automation</span>
+        <h1>Alex Rivera</h1>
+        <div class="subhead">
+            <span>CI/CD</span>
+            <span>Kubernetes</span>
+            <span>Terraform</span>
+            <span>observability</span>
+        </div>
 
-    <h1>Welcome to My Website</h1>
-    <p>This is a simple paragraph of text on a basic HTML page.</p>
+        <!-- short intro -->
+        <p style="margin-bottom: 2rem; font-size: 1.1rem; color: #1c3d5c;">
+            Aspiring DevOps engineer with a passion for building reliable, scalable infrastructure.
+            Currently learning infrastructure-as-code, container orchestration, and cloud-native tooling.
+        </p>
 
-    
-    <h1>Welcome to My Website</h1>
-    <p>This is a simple paragraph of text on a basic HTML page.</p>
+        <!-- skills section -->
+        <h2>🛠️ Tech stack & tools</h2>
+        <div class="skill-grid">
+            <div class="skill-item">🐳 Docker</div>
+            <div class="skill-item">☸️ Kubernetes</div>
+            <div class="skill-item">⚡ GitLab CI</div>
+            <div class="skill-item">🏗️ Terraform</div>
+            <div class="skill-item">🐧 Linux</div>
+            <div class="skill-item">📦 Ansible</div>
+            <div class="skill-item">☁️ AWS</div>
+            <div class="skill-item">📊 Prometheus + Grafana</div>
+            <div class="skill-item">🔁 Jenkins</div>
+            <div class="skill-item">🐚 Bash / Python</div>
+        </div>
 
-     <h1>Welcome to My Website</h1>
-    <p>This is a simple paragraph of text on a basic HTML page.</p>
-    
-    <!-- This is a link -->
-    <a href="https://www.w3schools.com" target="_blank">Visit W3Schools</a>
+        <!-- projects (devops student focus) -->
+        <h2>📁 Hands‑on projects</h2>
+        <div class="project-list">
+            <!-- project 1 -->
+            <div class="project-card">
+                <div class="project-title">
+                    <i>⎈</i> K8s microservice deployment
+                </div>
+                <div class="project-desc">
+                    Deployed a two‑tier application on a local Kubernetes cluster (k3s).
+                    Configured ConfigMaps, Secrets, and an Ingress controller. Implemented HPA for CPU‑based scaling.
+                </div>
+                <div class="project-tags">
+                    <span>Kubernetes</span>
+                    <span>Helm</span>
+                    <span>NGINX Ingress</span>
+                    <span>metrics-server</span>
+                </div>
+            </div>
 
+            <!-- project 2 -->
+            <div class="project-card">
+                <div class="project-title">
+                    <i>⚙️</i> CI/CD pipeline with GitLab
+                </div>
+                <div class="project-desc">
+                    Built a multi‑stage pipeline (build, test, security scan, deploy) for a Python Flask API.
+                    Integrated container scanning with Trivy and automated deployment to a staging environment.
+                </div>
+                <div class="project-tags">
+                    <span>GitLab CI</span>
+                    <span>Docker</span>
+                    <span>Trivy</span>
+                    <span>pytest</span>
+                </div>
+            </div>
+
+            <!-- project 3 -->
+            <div class="project-card">
+                <div class="project-title">
+                    <i>🏗️</i> Terraform AWS infrastructure
+                </div>
+                <div class="project-desc">
+                    Provisioned a VPC, public/private subnets, and an EC2 instance running a web server.
+                    Used remote state in S3 + DynamoDB locking. Modular structure for reusability.
+                </div>
+                <div class="project-tags">
+                    <span>Terraform</span>
+                    <span>AWS</span>
+                    <span>VPC</span>
+                    <span>IaC</span>
+                </div>
+            </div>
+
+            <!-- project 4 - monitoring -->
+            <div class="project-card">
+                <div class="project-title">
+                    <i>📈</i> Monitoring stack
+                </div>
+                <div class="project-desc">
+                    Set up Prometheus + Grafana + Node Exporter using Docker Compose.
+                    Created dashboards to monitor system metrics and configured alert rules for high CPU/memory.
+                </div>
+                <div class="project-tags">
+                    <span>Prometheus</span>
+                    <span>Grafana</span>
+                    <span>Alertmanager</span>
+                    <span>Docker Compose</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- contact / social (simple links, no icons library) -->
+        <h2>📬 Connect</h2>
+        <div class="contact-links">
+            <a href="#">📧 alex.rivera@devops.student</a>
+            <a href="#">🐙 github.com/alex-devops</a>
+            <a href="#">💼 linkedin.com/in/alexrivera</a>
+        </div>
+
+        <!-- footer note -->
+        <div class="footer-note">
+            ⚡ DevOps student portfolio — always learning, always automating.
+        </div>
+    </div>
 </body>
 </html>
