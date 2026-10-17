@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Testing the container
-        run: echo :Test the container"
+        run: echo "Test the container"
   deploye:
     needs:
       - build
