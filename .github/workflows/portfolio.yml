@@ -1,31 +1,23 @@
+
 name: Portfolio
 on:
   push:
     branches:
-      - main 
-  workflow_dispatch:
-
+      - main
+  workflow_dispatch: null
 permissions:
-    page: write
-    id-token: write
-    content: read
-  
-
+  page: write
+  id-token: write
+  content: read
 jobs:
   deploye:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
-      
       - name: Setup Github Pages
         uses: actions/configure-pages@v4
-      
       - name: Upload Static File
         uses: actions/upload-pages-artifact@v4
-      
       - name: Deploying to GitHub Pages
         uses: actions/deploy-pages@v4
-
-      
